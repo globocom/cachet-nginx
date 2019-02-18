@@ -5,6 +5,7 @@ RUN sudo apt-get -q -y install nginx
 ADD nginx.conf /etc/nginx/sites-enabled/cachet
 RUN sudo mkdir /var/lib/nginx/body
 RUN sudo sed -i 's/9000/3000/g' /etc/php5/fpm/pool.d/www.conf
+RUN sudo sed -i 's/\= 128M/\= 512M/g' /etc/php5/fpm/php.ini
 ADD run.sh /sbin/run.sh
 
 ENTRYPOINT ["/sbin/run.sh"]
